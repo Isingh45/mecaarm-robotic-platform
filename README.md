@@ -1,6 +1,6 @@
 # MecaArm Robotic Platform
 
-An STM32-based mobile manipulation platform featuring omnidirectional Mecanum-wheel locomotion, a multi-degree-of-freedom robotic arm, custom PCB hardware, embedded firmware, Bluetooth communication, and mobile-app control.
+An STM32-based mobile robotic platform featuring omnidirectional Mecanum-wheel locomotion, a multi-servo robotic arm, custom PCB hardware, Bluetooth communication, and mobile-app control.
 
 Senior Design Capstone Project
 California State University, East Bay
@@ -10,75 +10,94 @@ CMPE 492 / CMPE 493 (2025–2026)
 
 ## Overview
 
-MecaArm is a custom mobile robotic platform designed to provide direct access to embedded control, hardware interfaces, and system integration without relying on proprietary robotics controllers.
+MecaArm is a custom embedded robotics platform developed as a senior design capstone project. The project replaces vendor control electronics with a custom STM32-based control board, providing direct access to embedded hardware, motor control, communication interfaces, and power management.
 
-The project replaces vendor electronics with a custom STM32-based control board that integrates locomotion, arm actuation, wireless communication, sensing interfaces, and power management into a single embedded system.
-
-The platform combines:
-
-* Omnidirectional Mecanum-wheel drive
-* Multi-joint robotic arm control
-* Custom 4-layer PCB design
-* STM32 embedded firmware
-* ESP32 Bluetooth bridge
-* MIT App Inventor mobile application
-* Multi-rail power architecture
-* End-to-end system integration and validation
-
----
-
-## System Architecture
-
-Hardware Components:
-
-* STM32F429VET6 Microcontroller
-* ESP32-WROOM-32 Bluetooth Bridge
-* TB6612FNG Motor Drivers
-* RT7258 Buck Converters
-* LSM6DSR IMU
-* Multi-servo robotic arm
-* Four-wheel Mecanum drive platform
-* Custom 4-layer PCB
-
-Power Architecture:
-
-* 7.4V LiPo Battery
-* Dedicated high-current servo rail
-* Independent 5V motor rail
-* Independent 5V auxiliary rail
-* 3.3V logic rail
-
-The separated power rails were implemented to isolate motor loads from sensitive logic and communication circuitry, improving system stability during dynamic operation.
+The platform combines hardware design, embedded firmware development, Bluetooth communication, mobile-app integration, and system-level validation into a single robotics platform.
 
 ---
 
 ## Key Features
 
-### Omnidirectional Locomotion
+### Custom 4-Layer PCB
 
-Four independently controlled Mecanum wheels enable:
+Designed, fabricated, assembled, and validated a custom 4-layer PCB centered around the STM32F429VET6 microcontroller.
 
-* Forward and reverse movement
-* Lateral translation
-* In-place rotation
+Features include:
 
-### Robotic Arm Control
+* Multi-rail power architecture
+* Motor driver integration
+* Servo interfaces
+* Bluetooth communication interface
+* Expansion support for future sensor integration
+* Debug and programming interfaces
 
-Multi-joint robotic arm controlled through STM32-generated PWM signals with Bluetooth command input from a mobile application.
+### Embedded Control System
 
-### Wireless Mobile Control
+The STM32 firmware provides:
 
-Control path:
+* PWM motor control
+* Servo control
+* UART communication
+* Bluetooth command processing
+* Real-time actuator control
 
-Mobile App → Bluetooth → ESP32 → UART → STM32 → Motors & Servos
+An ESP32 module serves as a Bluetooth-to-UART bridge between the mobile application and the STM32 controller.
 
-### Custom PCB Hardware
+### Mobile Application Control
 
-Custom 4-layer PCB designed, fabricated, assembled, debugged, and validated as part of the project lifecycle.
+A custom MIT App Inventor application enables wireless control of:
+
+* Mecanum-wheel locomotion
+* Robotic arm movement
+* System operation through Bluetooth communication
+
+### Multi-Rail Power Architecture
+
+The platform utilizes a dedicated power distribution architecture:
+
+* 7.4V battery rail
+* Independent 5V motor rail
+* Independent 5V auxiliary rail
+* Dedicated 3.3V logic rail
+
+This separation helps isolate high-current motor loads from sensitive logic circuitry and communication interfaces.
 
 ---
 
-## Contributions
+## Demonstrated Functionality
+
+The completed system successfully demonstrated:
+
+* Bluetooth communication
+* Mobile application control
+* ESP32-to-STM32 communication
+* Mecanum-wheel movement
+* Multi-servo robotic arm control
+* Custom PCB operation
+* Stable multi-rail power delivery
+* End-to-end hardware and firmware integration
+
+---
+
+## System Architecture
+
+```text
+Mobile App
+     ↓
+Bluetooth
+     ↓
+ESP32 Bridge
+     ↓
+UART
+     ↓
+STM32F429VET6
+     ↓
+Motors + Servos
+```
+
+---
+
+## My Contributions
 
 ### Hardware Engineering
 
@@ -94,102 +113,86 @@ Custom 4-layer PCB designed, fabricated, assembled, debugged, and validated as p
 
 ### Embedded Systems
 
-* STM32 firmware development and integration
-* Motor control implementation
+* STM32 firmware contribution
+* Motor-control implementation support
 * Bluetooth communication integration
-* Embedded system validation and testing
+* Embedded system testing and validation
 
 ### System Integration
 
-* End-to-end platform integration
-* Hardware and firmware debugging
-* Demonstration preparation
-* Validation testing
+* Hardware and firmware integration
+* Platform validation
+* Demonstration testing
+* End-to-end system verification
 
 ---
 
-## Repository Contents
+## Repository Structure
 
-### Documentation
+```text
+Documentation/
+├── Final Report
+└── Final Presentation
 
-* Final technical report
-* Final project presentation
+Hardware/
+├── Schematic Files
+├── PCB Layout Files
+├── Fusion Design Files
+├── Power Budget
+└── Bill of Materials
 
-### Hardware
+Firmware/
+├── STM32 Firmware
+└── ESP32 Bluetooth Bridge
 
-* Schematic files
-* PCB layout files
-* Fusion design files
-* Power budget analysis
-* Bill of Materials
+Mobile-App/
+└── MIT App Inventor Project
 
-### Firmware
-
-* STM32 embedded firmware
-* ESP32 Bluetooth bridge firmware
-
-### Mobile App
-
-* MIT App Inventor project source
-
-### Validation
-
-* End-to-end demonstration video
-
----
-
-## Results
-
-The completed platform successfully demonstrated:
-
-* Bluetooth communication
-* Mobile application control
-* STM32 command processing
-* Mecanum-wheel locomotion
-* Multi-servo robotic arm actuation
-* Stable multi-rail power operation
-* Full-system integration
-
-The project validated a complete embedded robotics workflow spanning hardware design, firmware development, power systems, communication interfaces, and system integration.
-
----
-
-## Future Improvements
-
-Potential future enhancements include:
-
-* Closed-loop wheel velocity control
-* Joint feedback integration
-* Inverse kinematics
-* Autonomous navigation
-* ROS 2 integration
-* Improved PCB thermal design
-* Cost optimization for future revisions
+Validation/
+└── Demonstration Video
+```
 
 ---
 
 ## Technologies
 
-Hardware:
+### Hardware
 
 * STM32F429VET6
 * ESP32-WROOM-32
-* RT7258
-* TB6612FNG
+* RT7258 Buck Converters
+* TB6612FNG Motor Drivers
+* Mecanum Drive Platform
+* Multi-Servo Robotic Arm
 
-Firmware:
+### Software & Firmware
 
 * C
 * STM32 HAL
 * STM32CubeMX
+* UART Communication
+* Bluetooth SPP
 
-Software:
-
-* MIT App Inventor
-
-Tools:
+### Development Tools
 
 * Fusion 360 Electronics
-* Embedded Debugging Tools
-* Oscilloscope Validation
-* PCB Manufacturing Workflow
+* MIT App Inventor
+* ST-Link Debugging Tools
+
+---
+
+## Notes
+
+The custom PCB includes provisions for future expansion, including sensor and peripheral interfaces. While these interfaces were incorporated into the hardware design, the final demonstrated system focused on locomotion, robotic arm control, Bluetooth communication, embedded control, and full-system integration.
+
+---
+
+## Project Team
+
+* Inderpal Singh
+* Sukhpinder Singh
+* Feranmi Falodun
+* Pierreline Jacob
+
+California State University, East Bay
+Department of Engineering
