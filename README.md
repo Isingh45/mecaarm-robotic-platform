@@ -115,13 +115,17 @@ Validation/
 
 ---
 
+## Institution
+
+**California State University, East Bay**
+
+**Course:** CMPE 492 / CMPE 493 – Senior Design Capstone (2025–2026)
+
+---
+
 ## Authors
 
 * Inderpal Singh
 * Sukhpinder Singh
 * Feranmi Falodun
 * Pierreline Jacob
-
-**California State University, East Bay**
-
-**CMPE 492 / CMPE 493 – Senior Design Capstone (2025–2026)**
